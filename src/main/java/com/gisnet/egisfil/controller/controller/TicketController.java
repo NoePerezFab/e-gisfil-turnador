@@ -20,7 +20,7 @@ public class TicketController {
     private ObjectMapper maper = new ObjectMapper();
     
     @GetMapping("/api/tickets")
-    public String getTickets(){
+    public String getTickets() throws JsonProcessingException{
         List<Ticket> lista = repo.findAll();
         return maper.writeValueAsString(lista);
     }

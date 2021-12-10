@@ -21,6 +21,19 @@ public class Ticket {
     
     @Field
     private Cliente cliente;
+    
+    @Field
+    private Servicios servicio;
+
+    public Servicios getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(Servicios servicio) {
+        this.servicio = servicio;
+    }
+    
+    
 
     public String getId() {
         return id;
