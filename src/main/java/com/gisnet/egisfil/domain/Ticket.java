@@ -24,8 +24,21 @@ public class Ticket implements Serializable{
     private Cliente cliente;
     
     @Field
+    private String turno;
+    
+    @Field
     private Servicios servicio;
 
+    public String getTurno() {
+        return turno;
+    }
+
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
+
+    
+    
     public Servicios getServicio() {
         return servicio;
     }
