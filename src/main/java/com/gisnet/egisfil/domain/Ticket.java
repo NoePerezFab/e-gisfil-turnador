@@ -1,12 +1,13 @@
 
 package com.gisnet.egisfil.domain;
 
+import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.couchbase.core.mapping.Document;
 import org.springframework.data.couchbase.core.mapping.Field;
 
 @Document
-public class Ticket {
+public class Ticket implements Serializable{
     @Id
     private String id;
    

@@ -30,6 +30,9 @@ public class CouchbaseConfig extends AbstractCouchbaseConfiguration {
        return "e-gisfil-conf";
     }
     
-    
+    @Override
+    protected boolean autoIndexCreation() {
+        return true;
+    }
     
 }
