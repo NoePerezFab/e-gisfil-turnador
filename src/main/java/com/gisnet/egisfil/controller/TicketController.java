@@ -42,7 +42,7 @@ public class TicketController {
         if(sec.isEmpty()){
             Sucursal_secuencia_servicios secuencia = new Sucursal_secuencia_servicios();
             secuencia.setType("secuencia");
-            secuencia.setId("secuencia::"+java.time.LocalDate.now());
+            secuencia.setId("secuencia::"+java.time.LocalDate.now()+"_"+ticket.getServicio().getClave());
             secuencia.setFecha(""+java.sql.Date.valueOf(java.time.LocalDate.now()));
             secuencia.setClave_servicio(ticket.getServicio().getClave());
             secuencia.setSecuencia(2);
