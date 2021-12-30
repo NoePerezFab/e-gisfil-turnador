@@ -38,6 +38,8 @@ public class TicketController {
     public String addTicket(@RequestBody Ticket ticket) throws JsonProcessingException{
         ticket.setHora_llegada(System.currentTimeMillis());
         ticket.setType("ticket");
+        ticket.setTipo_Servicio(ticket.getServicio().getTipo_servicio());
+        ticket.setStatus(1);
         List<Sucursal_secuencia_servicios> sec = repoSecuencia.findByClaveServicio(ticket.getServicio().getClave(),java.sql.Date.valueOf(java.time.LocalDate.now()));
         if(sec.isEmpty()){
             Sucursal_secuencia_servicios secuencia = new Sucursal_secuencia_servicios();

@@ -15,7 +15,7 @@ public class Ticket implements Serializable{
     private Long hora_llegada;
     
     @Field
-    private Long tiempo_espera;
+    private String tiempo_espera;
     
     @Field
     private String type;
@@ -28,6 +28,31 @@ public class Ticket implements Serializable{
     
     @Field
     private Servicios servicio;
+    
+    @Field
+    private String tipo_Servicio;
+
+    @Field
+    private int status;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    
+    
+    public String getTipo_Servicio() {
+        return tipo_Servicio;
+    }
+
+    public void setTipo_Servicio(String tipo_Servicio) {
+        this.tipo_Servicio = tipo_Servicio;
+    }
+    
+    
 
     public String getTurno() {
         return turno;
@@ -57,7 +82,7 @@ public class Ticket implements Serializable{
         return hora_llegada;
     }
 
-    public Long getTiempo_espera() {
+    public String getTiempo_espera() {
         return tiempo_espera;
     }
 
@@ -77,7 +102,7 @@ public class Ticket implements Serializable{
         this.hora_llegada = hora_llegada;
     }
 
-    public void setTiempo_espera(Long tiempo_espera) {
+    public void setTiempo_espera(String tiempo_espera) {
         this.tiempo_espera = tiempo_espera;
     }
 
