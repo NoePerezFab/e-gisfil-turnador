@@ -30,6 +30,32 @@ public class Sucursal implements Serializable{
     
     @Field
     private List<Mostrador> mostradores;
+    
+    @Field
+    private String tyoe;
+    
+    @Field
+    private List<Servicios> servicios;
+
+    public String getTyoe() {
+        return tyoe;
+    }
+
+    public void setTyoe(String tyoe) {
+        this.tyoe = tyoe;
+    }
+    
+    
+
+    public List<Servicios> getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(List<Servicios> servicios) {
+        this.servicios = servicios;
+    }
+    
+    
 
     public String getId() {
         return id;

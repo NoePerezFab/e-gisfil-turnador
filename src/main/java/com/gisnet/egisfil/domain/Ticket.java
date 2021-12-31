@@ -34,6 +34,19 @@ public class Ticket implements Serializable{
 
     @Field
     private int status;
+    
+    @Field
+    private String id_sucursal;
+
+    public String getId_sucursal() {
+        return id_sucursal;
+    }
+
+    public void setId_sucursal(String id_sucursal) {
+        this.id_sucursal = id_sucursal;
+    }
+    
+    
 
     public int getStatus() {
         return status;

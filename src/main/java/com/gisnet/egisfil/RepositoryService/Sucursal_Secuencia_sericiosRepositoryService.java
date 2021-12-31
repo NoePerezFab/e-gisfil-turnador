@@ -44,9 +44,9 @@ public class Sucursal_Secuencia_sericiosRepositoryService implements Sucursal_se
     }
 
     @Override
-    public List<Sucursal_secuencia_servicios> findByClaveServicio(String clave_servicio,Date fecha) {
+    public List<Sucursal_secuencia_servicios> findByClaveServicio(String clave_servicio,Date fecha,String id_sucursal) {
         List<Sucursal_secuencia_servicios> lista = new ArrayList<>();
-        Iterator it = repo.findByCalveServicio(clave_servicio,fecha).iterator();
+        Iterator it = repo.findByCalveServicio(clave_servicio,fecha,id_sucursal).iterator();
         while(it.hasNext()){
             lista.add((Sucursal_secuencia_servicios)it.next());
             

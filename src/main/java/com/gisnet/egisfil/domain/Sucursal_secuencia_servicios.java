@@ -2,7 +2,6 @@
 package com.gisnet.egisfil.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.couchbase.core.mapping.Document;
 import org.springframework.data.couchbase.core.mapping.Field;
@@ -19,10 +18,23 @@ public class Sucursal_secuencia_servicios implements Serializable{
     private String clave_servicio;
     
     @Field
+    private String id_sucursal;
+    
+    @Field
     private int secuencia;
     
     @Field
     private String type;
+
+    public String getId_sucursal() {
+        return id_sucursal;
+    }
+
+    public void setId_sucursal(String id_sucursal) {
+        this.id_sucursal = id_sucursal;
+    }
+    
+    
 
     public String getType() {
         return type;
