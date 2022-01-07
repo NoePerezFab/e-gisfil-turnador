@@ -29,6 +29,19 @@ public class Servicios implements Serializable{
     @Field
     private String type;
 
+    @Field
+    private int ponderacion;
+
+    public int getPonderacion() {
+        return ponderacion;
+    }
+
+    public void setPonderacion(int ponderacion) {
+        this.ponderacion = ponderacion;
+    }
+    
+    
+    
     public String getType() {
         return type;
     }

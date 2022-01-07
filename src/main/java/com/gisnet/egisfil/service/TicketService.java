@@ -12,4 +12,5 @@ public interface TicketService {
     List<Ticket> findAll();
     Ticket create(Ticket ticket);
     Ticket update(Ticket ticket);
+    void delete(Ticket ticket);
 }

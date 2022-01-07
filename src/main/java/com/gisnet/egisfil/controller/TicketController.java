@@ -40,6 +40,7 @@ public class TicketController {
         ticket.setType("ticket");
         ticket.setTipo_Servicio(ticket.getServicio().getTipo_servicio());
         ticket.setStatus(1);
+        ticket.setTipo_Servicio(ticket.getServicio().getTipo_servicio());
         List<Sucursal_secuencia_servicios> sec = repoSecuencia.findByClaveServicio(ticket.getServicio().getClave(),java.sql.Date.valueOf(java.time.LocalDate.now()),ticket.getId_sucursal());
         if(sec.isEmpty()){
             Sucursal_secuencia_servicios secuencia = new Sucursal_secuencia_servicios();
@@ -51,13 +52,14 @@ public class TicketController {
             secuencia.setSecuencia(2);
             repoSecuencia.create(secuencia);
             ticket.setTurno(ticket.getServicio().getClave() + " 1");
+            
         }else{
             Sucursal_secuencia_servicios secuencia = sec.get(0);
             ticket.setTurno(ticket.getServicio().getClave() + " "+ secuencia.getSecuencia());
             secuencia.setSecuencia(secuencia.getSecuencia() + 1);
             repoSecuencia.update(secuencia);
         }
-        ticket.setId("ticket::"+ticket.getHora_llegada());
+        ticket.setId(ticket.getId_sucursal()+"::ticket::"+ticket.getHora_llegada());
         if(repo.findOne(ticket.getId()).isPresent()){
             return "Error";
         }

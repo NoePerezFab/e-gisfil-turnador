@@ -39,5 +39,10 @@ public class TicketRepositoryService implements TicketService{
     public Ticket update(Ticket ticket) {
         return repo.save(ticket);
     }
+
+    @Override
+    public void delete(Ticket ticket) {
+        repo.delete(ticket);
+    }
     
 }

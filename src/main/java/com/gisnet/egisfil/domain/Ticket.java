@@ -5,7 +5,11 @@ import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.couchbase.core.mapping.Document;
 import org.springframework.data.couchbase.core.mapping.Field;
+import org.springframework.data.couchbase.repository.Collection;
+import org.springframework.data.couchbase.repository.Scope;
 
+@Scope("tickets")
+@Collection("tickets")
 @Document
 public class Ticket implements Serializable{
     @Id
@@ -37,6 +41,18 @@ public class Ticket implements Serializable{
     
     @Field
     private String id_sucursal;
+    
+    @Field
+    private long hora_inicio;
+    
+
+    public long getHora_inicio() {
+        return hora_inicio;
+    }
+
+    public void setHora_inicio(long hora_inicio) {
+        this.hora_inicio = hora_inicio;
+    }
 
     public String getId_sucursal() {
         return id_sucursal;
