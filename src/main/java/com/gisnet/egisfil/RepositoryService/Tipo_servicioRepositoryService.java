@@ -40,6 +40,7 @@ public class Tipo_servicioRepositoryService implements Tipo_servicioService{
     @Override
     public Tipo_servicio update(Tipo_servicio tipoServicio) {
         return repo.save(tipoServicio);
+        
     }
     
 }

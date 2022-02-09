@@ -9,12 +9,19 @@ import com.gisnet.egisfil.RepositoryService.TicketRepositoryService;
 import com.gisnet.egisfil.domain.Sucursal_secuencia_servicios;
 import com.gisnet.egisfil.domain.Ticket;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -35,7 +42,7 @@ public class TicketController {
     }
     
     @PostMapping("/api/addticket")
-    public String addTicket(@RequestBody Ticket ticket) throws JsonProcessingException{
+    public String addTicket(@RequestBody Ticket ticket,HttpServletRequest req) throws JsonProcessingException{
         ticket.setHora_llegada(System.currentTimeMillis());
         ticket.setType("ticket");
         ticket.setTipo_Servicio(ticket.getServicio().getTipo_servicio());
@@ -63,7 +70,18 @@ public class TicketController {
         if(repo.findOne(ticket.getId()).isPresent()){
             return "Error";
         }
-        return maper.writeValueAsString(repo.create(ticket));
+        Ticket nuevo = repo.create(ticket);
+        
+        //Llamado a display
+         RestTemplate restT = new RestTemplate();
+        HttpHeaders h = new HttpHeaders();
+        h.setContentType(MediaType.APPLICATION_JSON);
+        String url = req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort()+"/displayback/api/call";
+        HttpEntity<String> entity = new HttpEntity<>(maper.writeValueAsString(nuevo),h);
+        ResponseEntity<?> result = restT.exchange(url,HttpMethod.POST,entity,String.class);
+        
+        
+        return maper.writeValueAsString(nuevo);
         
     }
 }
